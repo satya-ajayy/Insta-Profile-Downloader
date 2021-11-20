@@ -9,44 +9,16 @@ class ProfileDownloader:
         print('Bot Started!')
         self.API = API
 
-    @staticmethod
-    def SampleReponses(text):
-        user_msg = text.lower()
-        if user_msg in ['hello', 'hola', 'hii', 'hi']:
-            response = ['Hey! I can Download Insta Dp For You',
-                        'Hello! Give Me Any User Name',
-                        'Hey Hii! Give Me Any User Name'][random.randrange(3)]
-            return response
-        elif user_msg in ['who are you', 'who are you?']:
-            response = ['I Am a Bot Designed By Ajay',
-                        'I Am A Insta Profile Downloader Bot'][random.randrange(2)]
-            return response
-        elif user_msg in ['who designed you?', 'who is your creator?']:
-            response = ['I Am Designed By Satya Ajay',
-                        'Satya Ajay'][random.randrange(2)]
-            return response
-        elif user_msg in ['bye', 'byeee', 'see u', 'ttyl', 'tata']:
-            response = ['Bye Have A Nyc Day Ahead', 'Take Care Byeee',
-                        'See You Soon', 'Catch U Later Byeee',
-                        'Nice Talking To You Bye'][random.randrange(5)]
-            return response
-        else:
-            return -1
-
     def Handler(self, update, context):
         ig = Instaloader()
         query = update.message.text
-        response = self.SampleReponses(query)
-        if response == -1:
-            update.message.reply_text('Downloading...')
-            chat_id = update.message.chat_id
-            try:
-                user = Profile.from_username(ig.context, query)
-                context.bot.send_photo(chat_id, user.profile_pic_url)
-            except TracebackException:
-                print(format_exc())
-        else:
-            update.message.reply_text(response)
+        update.message.reply_text('Downloading...')
+        chat_id = update.message.chat_id
+        try:
+            user = Profile.from_username(ig.context, query)
+            context.bot.send_photo(chat_id, user.profile_pic_url)
+        except TracebackException:
+            print(format_exc())
 
     @staticmethod
     def StartCommand(update, context):
