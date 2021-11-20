@@ -1,0 +1,2 @@
+instaloader
+python-telegram-bot
