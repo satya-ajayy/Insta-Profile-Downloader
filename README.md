@@ -1,3 +1,3 @@
 # DP-Downloader
-bot to download insta profiles
+Profile Downloader Bot
 (bot to download insta dp's)
