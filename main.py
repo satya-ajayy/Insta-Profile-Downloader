@@ -38,14 +38,13 @@ class ProfileDownloader:
         query = update.message.text
         response = self.SampleReponses(query)
         if response == -1:
-            msg = update.message.reply_text('Downloading...')
+            update.message.reply_text('Downloading...')
             chat_id = update.message.chat_id
             try:
                 user = Profile.from_username(ig.context, query)
                 context.bot.send_photo(chat_id, user.profile_pic_url)
             except TracebackException:
                 print(format_exc())
-                msg.edit_text('Try again 😕😕! Check the username correctly')
         else:
             update.message.reply_text(response)
 
@@ -65,7 +64,7 @@ class ProfileDownloader:
         if not context.error:
             text1 = 'I Am A Bot To Download Profiles\n\n'
             text2 = 'You can control me by sending Insta Usernames'
-            text3 = '(Send Some Usernames to Try)'
+            text3 = '(Send Some Usernames To Try)'
             text = text1 + text2 + text3
             update.message.reply_text(text)
         else:
@@ -73,7 +72,7 @@ class ProfileDownloader:
 
     @staticmethod
     def Error(update, context):
-        update.message.reply_text('⚠ Unable To Fetch Data')
+        update.message.reply_text('Try again 😕😕! Check the username correctly')
         print(f'Update {update} caused Error {context.error}')
 
     def RunBot(self):
