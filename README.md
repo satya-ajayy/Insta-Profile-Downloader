@@ -1,6 +1,6 @@
 # Telegram Profile Downloader Bot
 
-<img src="qr.jpg" alt="QR Code" width="100" height="100"/>
+<img src="qr.jpg" alt="QR Code" width="200" height="200"/>
 
 ## Description
 
@@ -17,14 +17,3 @@ This is a Telegram bot that allows users to download Instagram profile pictures 
 - Python-Telegram-Bot
 - Instaloader
 - Docker (for deployment)
-
-## Installation
-
-To set up the bot locally, follow these steps:
-
-1. **Clone the repository:**
-
-   ```bash
-   git clone https://github.com/yourusername/telegram-profile-downloader-bot.git
-   cd telegram-profile-downloader-bot
-   ```
