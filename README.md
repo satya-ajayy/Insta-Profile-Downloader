@@ -1,6 +1,6 @@
 # Telegram Profile Downloader Bot
 
-![QR Code](qr.jpg)
+<img src="qr.jpg" alt="QR Code" width="100" height="100"/>
 
 ## Description
 
