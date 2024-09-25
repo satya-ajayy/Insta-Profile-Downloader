@@ -1,6 +1,6 @@
 # Telegram Profile Downloader Bot
 
-![QR Code](qr.png)
+![QR Code](qr.jpg)
 
 ## Description
 
