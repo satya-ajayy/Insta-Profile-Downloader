@@ -14,11 +14,9 @@ logger = logging.getLogger(__name__)
 
 
 class ProfileDownloader:
-    def __init__(self, api_token: str, profile_name: str, password: str):
+    def __init__(self, api_token: str):
         self.api_token = api_token
         self.ig = Instaloader()
-        self.ig.login(profile_name, password)
-        print("Logged in successfully!")
 
     @staticmethod
     async def start(update: Update, context: CallbackContext):
@@ -62,11 +60,8 @@ class ProfileDownloader:
 
 if __name__ == '__main__':
     TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-    USERNAME = os.getenv("INSTA_USERNAME")
-    PASSWORD = os.getenv("INSTA_PASSWORD")
+    if TOKEN is None:
+        raise ValueError("TELEGRAM_BOT_TOKEN is required to run the bot.")
 
-    if not all([TOKEN, USERNAME, PASSWORD]):
-        raise ValueError("One or more required environment variables are missing!")
-
-    bot = ProfileDownloader(TOKEN, USERNAME, PASSWORD)
+    bot = ProfileDownloader(TOKEN)
     bot.run_bot()
