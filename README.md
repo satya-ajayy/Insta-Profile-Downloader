@@ -12,4 +12,3 @@ This is a Telegram bot that allows users to download Instagram profile pictures 
 - Python 3
 - Python-Telegram-Bot
 - Instaloader
-- Docker (for deployment)
