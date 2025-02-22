@@ -4,6 +4,7 @@ from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, CallbackContext
 from instaloader import Instaloader, Profile
 
+
 # Enable logging
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -13,9 +14,11 @@ logger = logging.getLogger(__name__)
 
 
 class ProfileDownloader:
-    def __init__(self, api_token: str):
+    def __init__(self, api_token: str, profile_name: str, password: str):
         self.api_token = api_token
         self.ig = Instaloader()
+        self.ig.login(profile_name, password)
+        print("Logged in successfully!")
 
     @staticmethod
     async def start(update: Update, context: CallbackContext):
@@ -59,7 +62,11 @@ class ProfileDownloader:
 
 if __name__ == '__main__':
     TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-    if not TOKEN:
-        raise ValueError("Missing TELEGRAM_BOT_TOKEN environment variable")
-    bot = ProfileDownloader(TOKEN)
+    USERNAME = os.getenv("INSTA_USERNAME")
+    PASSWORD = os.getenv("INSTA_PASSWORD")
+
+    if not all([TOKEN, USERNAME, PASSWORD]):
+        raise ValueError("One or more required environment variables are missing!")
+
+    bot = ProfileDownloader(TOKEN, USERNAME, PASSWORD)
     bot.run_bot()
